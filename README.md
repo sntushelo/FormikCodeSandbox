@@ -1,2 +1,0 @@
-# FormikCodeSandbox
-Created with CodeSandbox
