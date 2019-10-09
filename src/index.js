@@ -6,7 +6,7 @@ import Yup from "yup";
 import "./styles.css";
 
 //const App = ({ values, handleChange, handleSubmit }) => {
-const App = ({ values, errors, touched }) => {
+const App = ({ values, errors, touched, isSubmitting }) => {
   return (
     <Form>
       <div>
@@ -25,12 +25,10 @@ const App = ({ values, errors, touched }) => {
       </label>
       <br />
       <Field component="select" name="plan">
-        <option value="free" selected>
-          Free
-        </option>
+        <option value="free">Free</option>
         <option value="premium">Premium</option>
       </Field>
-      <button>Submit</button>
+      <button disabled={isSubmitting}>Submit</button>
     </Form>
   );
 };
@@ -52,8 +50,14 @@ const FormikApp = withFormik({
       .min(9)
       .required()
   }),
-  handleSubmit(values) {
-    console.log(values);
+  handleSubmit(values, {resetForm, setErrors, setSubmitting}) {
+    setTimeout(() => {
+      if(values.email === 'sivu@tbe.com'){
+        setErrors({email: 'email is taken broO!'})
+      }else{
+        resetForm()
+      }
+    }, 2000)
   }
 })(App);
 
