@@ -4,55 +4,37 @@ import Yup from "yup";
 
 import "../../styles.css";
 
-import RfqItems from "../rfqItems";
-
-const RfqForm = ({ values, errors, touched, isSubmitting }) => {
+const PurchaseOrderForm = ({ values, errors, touched, isSubmitting }) => {
   return (
     <Form>
       <div>
-        <h2>RFQs Details Form</h2>
+        <h2>Purchase Order Form</h2>
         <table>
           <tbody>
             <tr>
-              <td>Date Received:</td>
+              <td>Department:</td>
               <td>
-                <Field name="department" type="text" placeholder="Department" />
-              </td>
-            </tr>
-            <tr>
-              <td>Date Received:</td>
-              <td>
-                <Field
-                  name="dateReceived"
-                  type="text"
-                  placeholder="Date Received"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Due Date:</td>
-              <td>
-                <Field name="dueDate" type="text" placeholder="Due Date" />
-              </td>
-            </tr>
-            <tr>
-              <td>Reference No.:</td>
-              <td>
-                <Field
-                  name="referenceNum"
-                  type="text"
-                  placeholder="Referencem"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Status:</td>
-              <td>
-                <Field component="select" name="status">
-                  <option value="received">Received</option>
-                  <option value="inProgress">In Progress</option>
-                  <option value="submitted">Submitted</option>
+                <Field component="select" name="department">
+                  <option value="received">Public Works</option>
+                  <option value="inProgress">Health</option>
+                  <option value="submitted">Prasa</option>
                 </Field>
+              </td>
+            </tr>
+            <tr>
+              <td>RFQ Reference No.:</td>
+              <td>
+                <Field
+                  name="rfqRefNo"
+                  type="text"
+                  placeholder="RFQ Reference No."
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Upload File:</td>
+              <td>
+                <Field name="filePath" type="text" placeholder="File Path" />
               </td>
             </tr>
             <tr>
@@ -63,15 +45,12 @@ const RfqForm = ({ values, errors, touched, isSubmitting }) => {
             </tr>
           </tbody>
         </table>
-        <div>
-          <RfqItems />
-        </div>
       </div>
     </Form>
   );
 };
 
-const FormikRfq = withFormik({
+const FormikPurchaseOrder = withFormik({
   mapPropsToValues({ email, password, newsletter, plan }) {
     return {
       email: email || "",
@@ -98,6 +77,6 @@ const FormikRfq = withFormik({
       setSubmitting(false);
     }, 2000);
   }
-})(RfqForm);
+})(PurchaseOrderForm);
 
-export default FormikRfq;
+export default FormikPurchaseOrder;

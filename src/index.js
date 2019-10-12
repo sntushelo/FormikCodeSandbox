@@ -2,10 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "./styles.css";
-import RfqForm from "./components/forms/rfqForm";
+import LandingPage from "./components/dashboards/landingPage";
 
 const App = () => {
-  return <RfqForm />;
+  return (
+    <div>
+      <LandingPage />
+    </div>
+  );
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));

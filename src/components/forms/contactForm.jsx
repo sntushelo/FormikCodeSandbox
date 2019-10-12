@@ -2,7 +2,7 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import Yup from "yup";
 
-import "../styles.css";
+import "../../styles.css";
 
 const ContactForm = ({ values, errors, touched, isSubmitting }) => {
   return (
@@ -10,30 +10,42 @@ const ContactForm = ({ values, errors, touched, isSubmitting }) => {
       <div>
         <h2>Contact Form</h2>
         <table>
-          <tr>
-            <td>Department:</td>
-            <td>
-              <Field name="department" type="text" placeholder="department" />
-            </td>
-          </tr>
-          <tr>
-            <td>Name:</td>
-            <td>
-              <Field name="name" type="text" placeholder="Name" />
-            </td>
-          </tr>
-          <tr>
-            <td>Contact Number:</td>
-            <td>
-              <Field name="cellNumber" type="text" placeholder="Cell Number" />
-            </td>
-          </tr>
-          <tr>
-            <td>Email:</td>
-            <td>
-              <Field name="email" type="text" placeholder="email" />
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Department:</td>
+              <td>
+                <Field name="department" type="text" placeholder="department" />
+              </td>
+            </tr>
+            <tr>
+              <td>Name:</td>
+              <td>
+                <Field name="name" type="text" placeholder="Name" />
+              </td>
+            </tr>
+            <tr>
+              <td>Contact Number:</td>
+              <td>
+                <Field
+                  name="cellNumber"
+                  type="text"
+                  placeholder="Cell Number"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td>
+                <Field name="email" type="text" placeholder="email" />
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>
+                <button disabled={isSubmitting}>Save</button>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </Form>

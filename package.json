@@ -6,8 +6,10 @@
   "main": "src/index.js",
   "dependencies": {
     "formik": "0.10.4",
+    "hookrouter": "1.2.3",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "react-router-dom": "5.1.2",
     "react-scripts": "3.0.1",
     "yup": "0.23.0"
   },
