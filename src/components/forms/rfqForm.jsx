@@ -6,7 +6,7 @@ import "../../styles.css";
 
 import RfqItems from "../rfqItems";
 
-const RfqForm = ({ values, errors, touched, isSubmitting }) => {
+const RfqForm = ({ values, errors, touched, isSubmitting}) => {
   return (
     <Form>
       <div>
@@ -14,7 +14,7 @@ const RfqForm = ({ values, errors, touched, isSubmitting }) => {
         <table>
           <tbody>
             <tr>
-              <td>Date Received:</td>
+              <td>Department:</td>
               <td>
                 <Field name="department" type="text" placeholder="Department" />
               </td>
@@ -33,6 +33,20 @@ const RfqForm = ({ values, errors, touched, isSubmitting }) => {
               <td>Due Date:</td>
               <td>
                 <Field name="dueDate" type="text" placeholder="Due Date" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>
+                Set as a high priority RFQ to be attended to ASAP
+                </label>
+              </td>
+              <td>
+                <Field
+                  name="isHighPriority"
+                  type="checkbox"
+                  checked={values.isHighPriority}
+                />
               </td>
             </tr>
             <tr>
@@ -63,38 +77,32 @@ const RfqForm = ({ values, errors, touched, isSubmitting }) => {
             </tr>
           </tbody>
         </table>
-        <div>
-          <RfqItems />
-        </div>
       </div>
     </Form>
   );
 };
 
 const FormikRfq = withFormik({
-  mapPropsToValues({ email, password, newsletter, plan }) {
+  mapPropsToValues({ department, dateReceived, dueDate, isHighPriority, referenceNum, status }) {
     return {
-      email: email || "",
-      password: password || "",
-      newsletter: newsletter || false,
-      plan: plan || "free"
+      department: department || "",
+      dateReceived: dateReceived || "",
+      dueDate: dueDate || "",
+      isHighPriority: isHighPriority || false,
+      referenceNum: referenceNum || "",
+      status: status || "received"
     };
   },
-  validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email()
-      .required(),
-    password: Yup.string()
-      .min(9)
-      .required()
-  }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     setTimeout(() => {
       if (values.email === "sivu@tbe.com") {
         setErrors({ email: "email is taken broO!" });
       } else {
-        resetForm();
+        //console.log('There are no errors')
+        //resetForm();
+        console.log(values);
       }
+      
       setSubmitting(false);
     }, 2000);
   }

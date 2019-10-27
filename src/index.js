@@ -2,12 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "./styles.css";
-import LandingPage from "./components/dashboards/landingPage";
+import Dashboard from "./components/dashboards/dashboard";
+import Store from './store';
 
-const App = () => {
+export default function App() {
+
   return (
     <div>
-      <LandingPage />
+      <Store>
+        <Dashboard/>
+      </Store>
     </div>
   );
 };
