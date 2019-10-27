@@ -5,6 +5,7 @@ import Yup from "yup";
 import "../../styles.css";
 
 import RfqItems from "../rfqItems";
+import Store from '../../store';
 
 const RfqForm = ({ values, errors, touched, isSubmitting}) => {
   return (

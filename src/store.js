@@ -1,10 +1,10 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, createContext} from 'react';
 import {editTableLogic} from './shared/gridEdit';
 
-export const RfqContext = React.createContext([]);
+export const RfqContext = createContext([]);
 
 const Store = ({children}) => {
-    const [rfqs, setRfqs] = useState({
+    const [rfq, setRfq] = useState({
         columns: [
             { title: 'Department', field: 'department' },
             { title: 'Date Received', field: 'dateReceived' },
@@ -43,26 +43,45 @@ const Store = ({children}) => {
             },
           ]
     });
-    const [rfqItems, setRfqItems] =  useState({
-        columns: [
-            { title: 'Name', field: 'name' },
-            { title: 'Surname', field: 'surname' },
-            { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-            {
-              title: 'Birth Place',
-              field: 'birthCity',
-              lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-            },
-          ],
-          data: [
-            { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-            {
-              name: 'Zerya Betül',
-              surname: 'Baran',
-              birthYear: 2017,
-              birthCity: 34,
-            },
-          ]
+    const [rfqItem, setRfqItem] =  useState({
+      columns: [
+        { title: 'RFQ Referene Number', field: 'refNum' },
+        { title: 'Name', field: 'name' },
+        { title: 'Description', field: 'description' },
+        { title: 'Quantity', field: 'quantity' }
+      ],
+      data: [
+        {
+          refNum: 'PW-03-2019-001',
+          name: 'Printer',
+          description: 'Highest quality colour printer - Features like Copying and Scanning are not necessary',
+          quantity: 120
+        },
+        {
+          refNum: 'PW-03-2019-001',
+          name: 'Copy And Scanner',
+          description: 'Highest quality colour copy and scanner - Features like printing are not necessary',
+          quantity: 100
+        },
+        {
+          refNum: 'PW-03-2019-001',
+          name: 'HP Laptop',
+          description: 'High spec laptop for graphics designers',
+          quantity: 35
+        },
+        {
+          refNum: 'PRA-03-2019-001',
+          name: 'Protective Work wear',
+          description: 'Protective work wear with Long sleeve top and separate long pents - must have safety features for chemical spills at warehouse',
+          quantity: 3000
+        },
+        {
+          refNum: 'PRA-03-2019-001',
+          name: 'Protective Safety Boots',
+          description: 'Safety boots for working with chemicals and heavy objects - as per attached image',
+          quantity: 3000
+        },
+      ]
     });
     const [quotes, setQuotes] = useState({
         columns: [
@@ -101,13 +120,14 @@ const Store = ({children}) => {
   });
     return (
         <RfqContext.Provider value={{
-            rfqs, setRfqs,
-            rfqItems, setRfqItems,
+            editTableLogic,
+            rfq, setRfq,
+            rfqItem, setRfqItem,
             quotes, setQuotes,
             purchaseOrders, setPurchaseOrders,
             invoices, setInvoices,
             contacts, setContacts,
-            deliveryNotes, setDeliveryNotes, editTableLogic}
+            deliveryNotes, setDeliveryNotes}
             }>
             {children}
         </RfqContext.Provider>

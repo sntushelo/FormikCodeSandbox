@@ -31,6 +31,14 @@ export const mainListItems = (
     </ListItem>
     <ListItem button>
       <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <A href="/rfqItems">
+        <ListItemText primary="RFQ Items" />
+      </A>
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
       <A href="/rfqQuotes">

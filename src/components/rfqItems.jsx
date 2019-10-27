@@ -1,36 +1,18 @@
-import React from "react";
-import "../styles.css";
 
-const RfqItems = ({ values, errors, touched, isSubmitting }) => {
+import React, {useContext} from 'react';
+import MaterialTable from 'material-table';
+
+import {RfqContext} from '../store';
+
+export default function RfqItems() {
+  const {rfqItem, setRfqItem, editTableLogic} = React.useContext(RfqContext);
+  
   return (
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <h3>RFQ items Grid:</h3>
-            </td>
-            <td />
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>Quantity</td>
-            <td>Price</td>
-          </tr>
-          <tr>
-            <td>Brake Pads (4 pack) </td>
-            <td>15</td>
-            <td>3 550</td>
-          </tr>
-          <tr>
-            <td>Oil 1 litre</td>
-            <td>100</td>
-            <td>350</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <MaterialTable
+      title="RFQ Items"
+      columns={rfqItem.columns}
+      data={rfqItem.data}
+      editable={editTableLogic(rfqItem, setRfqItem)}
+    />
   );
-};
-
-export default RfqItems;
+}
