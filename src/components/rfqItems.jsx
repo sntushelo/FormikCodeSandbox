@@ -5,7 +5,7 @@ import MaterialTable from 'material-table';
 import {RfqContext} from '../store';
 
 export default function RfqItems() {
-  const {rfqItem, setRfqItem, editTableLogic} = React.useContext(RfqContext);
+  const {rfqItem, setRfqItem, editTableLogic} = useContext(RfqContext);
   
   return (
     <MaterialTable

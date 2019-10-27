@@ -4,7 +4,7 @@ import MaterialTable from 'material-table';
 import {RfqContext} from '../store';
 
 export default function RfqQuotes() {
-  const {quotes, setQuotes, editTableLogic} = React.useContext(RfqContext);
+  const {quotes, setQuotes, editTableLogic} = useContext(RfqContext);
   
   return (
     <MaterialTable

@@ -4,7 +4,7 @@ import MaterialTable from 'material-table';
 import {RfqContext} from '../store';
 
 export default function RfqDeliveryNotes() {
-  const {deliveryNotes, setDeliveryNotes, editTableLogic} = React.useContext(RfqContext);
+  const {deliveryNotes, setDeliveryNotes, editTableLogic} = useContext(RfqContext);
   
   return (
     <MaterialTable

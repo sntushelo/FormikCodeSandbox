@@ -5,7 +5,7 @@ import MaterialTable from 'material-table';
 import {RfqContext} from '../store';
 
 export default function RfqDataGrid() {
-  const {rfq, setRfq, editTableLogic} = React.useContext(RfqContext);
+  const {rfq, setRfq, editTableLogic} = useContext(RfqContext);
   
   return (
     <MaterialTable
