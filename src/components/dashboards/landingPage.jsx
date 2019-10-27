@@ -1,64 +1,71 @@
 import React from "react";
 import "../../styles.css";
-import { useRoutes, A } from "hookrouter";
-import routes from "../router";
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import clsx from 'clsx';
+import Container from '@material-ui/core/Container';
+import { A } from "hookrouter";
+
+import Grid from '@material-ui/core/Grid';
+import Badge from '@material-ui/core/Badge';
+import Paper from '@material-ui/core/Paper';
+import {useStyles} from '../../shared/useStyles';
 
 const LandingPage = () => {
+  const classes = useStyles();
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   //const routeResult = useRoutes(routes);
   return (
     <div>
-      <table>
-        <tbody>
-        <tr>
-            <td/>
-            <td/>
-            <td/>
-            <td/>
-        </tr>
+      <Container maxWidth="lg" className={classes.container}>
+        <table>
           <tr>
-            <td>              
-              <ListItem button>
-                <A href="/addRfq">
-                  <ListItemText primary="Add RFQ" />
-                </A>
-              </ListItem>
-            </td>
             <td>
-              <ListItem button>
-                <A href="/rfqItems">
-                  <ListItemText primary="RFQ Items" />
-                </A>
-              </ListItem>
-            </td>
-            <td>              
-              <ListItem button>
-                <A href="/rfqQuotes">
-                  <ListItemText primary="Add RFQ Quotations" />
-                </A>
-              </ListItem>
-            </td>
-            <td>
-              <ListItem button>
-              <A href="/addPurchaseOrder">
-                  <ListItemText primary="Add Purchase Order" />
-                </A>
-              </ListItem>
-            </td>
-            <td>
-              <ListItem button>
-                <A href="/addContact">
-                  <ListItemText primary="Contacts Pager" />
-                </A>
-              </ListItem>
+              <Grid container spacing={3}>
+                {/* Chart */}
+                <Grid item xs={12} md={4} lg={6}>
+                  <Paper className={classes.paper}>
+                    <A href="/rfqData">
+                      <center><h1> RFQs <br/><br/></h1></center>
+                    </A>
+                  </Paper>
+                </Grid>
+                {/* Recent Deposits */}
+                <Grid item xs={12} md={4} lg={6}>
+                  <Paper className={classes.paper}>
+                    <A href="/rfqQuotes">
+                      <center><h1> QUOTATIONS<br/><br/> </h1></center>
+                    </A>
+                  </Paper>
+                </Grid>
+              </Grid>
             </td>
           </tr>
-        </tbody>
-      </table>
-      {/* <div>{routeResult}</div> */}
+          <tr><td></td></tr>
+          <tr><td></td></tr>
+          <tr>
+            <td>
+              <Grid container spacing={3}>
+                {/* Recent Deposits */}
+                <Grid item xs={12} md={4} lg={6}>
+                  <Paper className={classes.paper}>
+                    <A href="/rfqQuotes">
+                      <center><h1> QUOTATIONS<br/><br/> </h1></center>
+                    </A>
+                  </Paper>
+                </Grid>
+                {/* Recent Orders */}
+                <Grid item xs={12} md={4} lg={6}>
+                  <Paper className={classes.paper}>
+                    <A href="/rfqPurchaseOrders">
+                      <center><h1> PURCHASE ORDERS </h1></center>
+                    </A>
+                  </Paper>
+                </Grid>
+              </Grid>
+            </td>
+          </tr>
+
+        </table>
+        </Container>
     </div>
   );
 };

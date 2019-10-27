@@ -8,8 +8,10 @@ import RfqPurchaseOrders from "./rfqPurchaseOrders";
 import RfqQuotes from "./rfqQuotes";
 import RfqDataGrid from "./rfqDataGrid";
 import RfqDeliveryNotes from "./rfqDeliveryNotes";
+import LandingPage from "./dashboards/landingPage";
 
 const routes = {
+  "/": () => <LandingPage />,
   "/rfqItems": () => <RfqItems />,
   "/rfqData": () => <RfqDataGrid />,
   "/rfqQuotes": () => <RfqQuotes/>,

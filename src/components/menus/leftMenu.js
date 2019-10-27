@@ -16,8 +16,8 @@ export const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <A href="/addRfq">
-        <ListItemText primary="RFQ Form" />
+      <A href="/">
+        <ListItemText primary="Home" />
       </A>
     </ListItem>
     <ListItem button>
